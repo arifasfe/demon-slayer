@@ -83,6 +83,8 @@ pause_font = pygame.font.Font(
     "resources/fonts/Slaughter.ttf", 200, bold=pygame.font.Font.bold)
 resume_font = pygame.font.Font(
     "resources/fonts/Slaughter.ttf", 32, bold=pygame.font.Font.bold)
+ko_font = pygame.font.Font(
+    "resources/fonts/Slaughter.ttf", 50, bold=pygame.font.Font.bold)
 
 
 # show text
@@ -149,6 +151,12 @@ while run:
 
         # show KO image
         screen.blit(ko_image, (360, 150))
+        if fighter_1.health == 0:
+            show_text("Wizard wins", ko_font, RED, 485, 467)
+        elif fighter_2.health == 0:
+            show_text("Raiden wins", ko_font, RED, 485, 467)
+        else:
+            pass
         pygame.mixer.music.stop()
         if ko_song_play == False:
             ko_fx.play()
@@ -157,7 +165,7 @@ while run:
         # Game over howar 1.5s por ENTER press korte bolbe, ENTER press korle game restart hobe
         if pygame.time.get_ticks() - round_over_time > 1500:
             show_text("Press  ENTER  for new game",
-                      title_font, WHITE, 400, 570)
+                      title_font, WHITE, 435, 570)
 
             if key[pygame.K_RETURN]:
                 ko_fx.stop()
